@@ -22,8 +22,9 @@ import {
 // --- Configuration & Data ---
 const DATA = {
   name: "Shola",
-  // Premium BigHeads SVG with a solid yellow background
-  avatarUrl: "https://api.dicebear.com/7.x/big-heads/svg?seed=Shola&backgroundColor=facc15&radius=20",
+  // Updated to your local image paths
+  navAvatar: "/you.jpeg", 
+  heroAvatar: "/emote.jpeg",
   email: "Sholaupdates@gmail.com",
   cvLink: "https://docs.google.com/document/d/1DN9irqCovBHt4dAu5iWmQD_MtiejPhVf/edit?usp=drivesdk",
   socials: {
@@ -95,13 +96,13 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen transition-colors duration-500 bg-zinc-50 dark:bg-[#0a0a0a] text-zinc-600 dark:text-zinc-400 font-sans selection:bg-yellow-200 dark:selection:bg-zinc-800">
       
-      {/* 1. Navigation - Updated with Avatar and Top Links */}
+      {/* 1. Navigation - Updated with you.jpeg */}
       <nav className="max-w-3xl mx-auto px-6 py-8 flex items-center justify-between">
         <div className="flex items-center gap-6">
           <img 
-            src={DATA.avatarUrl} 
+            src={DATA.navAvatar} 
             alt="Profile" 
-            className="w-10 h-10 rounded-xl bg-yellow-400 border border-zinc-200 dark:border-zinc-800 shadow-sm"
+            className="w-10 h-10 rounded-xl object-cover bg-yellow-400 border border-zinc-200 dark:border-zinc-800 shadow-sm"
           />
           <div className="flex gap-6 text-sm font-bold tracking-tight">
             <a href="#work" className="text-zinc-900 dark:text-white hover:opacity-70 transition-opacity">Work</a>
@@ -119,7 +120,7 @@ export default function PortfolioPage() {
       </nav>
 
       <main className="max-w-3xl mx-auto px-6 pt-4 pb-24">
-        {/* 2. Hero Section - Updated Avatar and Smaller Text */}
+        {/* 2. Hero Section - Updated with emote.jpeg */}
         <motion.section 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -127,9 +128,9 @@ export default function PortfolioPage() {
           className="space-y-4 mb-12"
         >
           <img 
-            src={DATA.avatarUrl} 
+            src={DATA.heroAvatar} 
             alt={DATA.name} 
-            className="w-24 h-24 rounded-full bg-yellow-400 border-2 border-zinc-200 dark:border-zinc-800 mb-2 shadow-lg hover:scale-105 transition-transform cursor-pointer"
+            className="w-24 h-24 rounded-full object-cover bg-yellow-400 border-2 border-zinc-200 dark:border-zinc-800 mb-2 shadow-lg hover:scale-105 transition-transform cursor-pointer"
           />
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-tight">
             Hi, I'm {DATA.name} — <span className="text-zinc-500 font-medium">A Web Developer & QA Specialist.</span>
