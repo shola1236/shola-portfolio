@@ -2,16 +2,25 @@
   "name": "shola-portfolio",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
     "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "clsx": "latest",
+    "tailwind-merge": "latest"
   },
   "devDependencies": {
     "autoprefixer": "latest",
     "postcss": "latest",
     "tailwindcss": "latest",
+    "tailwindcss-animate": "latest",
     "typescript": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
