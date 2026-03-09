@@ -28,7 +28,7 @@ const DATA = {
   email: "Sholaupdates@gmail.com",
   cvLink: "https://docs.google.com/document/d/1DN9irqCovBHt4dAu5iWmQD_MtiejPhVf/edit?usp=drivesdk",
   socials: {
-    github: "https://github.com/yourusername",
+    github: "https://github.com/shola1236",
     linkedin: "https://linkedin.com/in/yourusername",
   },
   projects: [
