@@ -1,85 +1,120 @@
-export default function Home() {
+"use client";
+
+import React, { useState } from 'react';
+import { 
+  FileText, 
+  Send, 
+  Check, 
+  Code2, 
+  Globe, 
+  Cpu, 
+  Layout, 
+  Database, 
+  ShieldCheck,
+  Github,
+  Linkedin,
+  Mail,
+  Terminal
+} from 'lucide-react';
+
+export default function PortfolioPage() {
+  const [copied, setCopied] = useState<boolean>(false);
+  
+  // Your Verified Credentials
+  const name: string = "Shola Akinosi"; 
+  const email: string = "Sholaupdates@gmail.com";
+  const cvLink: string = "https://docs.google.com/document/d/1DN9irqCovBHt4dAu5iWmQD_MtiejPhVf/edit?usp=drivesdk&ouid=112740401476684133802&rtpof=true&sd=true";
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Copy failed", err);
+    }
+  };
+
   return (
-    <div className="portfolio-container">
-      {/* Navigation */}
-      <nav className="navbar">
-        <div className="avatar-small">SA</div>
-        <div className="nav-links">
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+    <div className="relative min-h-screen bg-[#050505] text-zinc-100 flex flex-col items-center justify-center p-8 overflow-hidden font-sans">
+      {/* Vantage-Style Ambient Glows */}
+      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[140px] pointer-events-none" />
 
-      <main>
-        {/* Hero Section */}
-        <section className="hero">
-          <div className="avatar-large">SA</div>
-          <h1 className="hero-title">
-            Hi, I'm Shola Akinosi — <span>A Web Developer.</span>
+      <main className="relative z-10 max-w-xl w-full">
+        {/* Profile Header */}
+        <header className="mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <div className="w-12 h-12 rounded-xl bg-white text-black mb-6 flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+            <Terminal size={22} strokeWidth={2.5} />
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter mb-4">
+            {name}
           </h1>
-          <p className="hero-description">
-            I build high-performance web apps using 
-            <span className="skill-pill">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#3178C6"><path d="M1.125 0C.502 0 0 .502 0 1.125V22.875C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm17.353 18.306c-.61 0-1.142-.202-1.596-.603-.454-.401-.677-.944-.677-1.63h1.935c0 .21.058.377.173.496.115.12.29.181.526.181.243 0 .434-.058.575-.173.14-.115.21-.264.21-.444 0-.166-.048-.306-.142-.422-.094-.114-.236-.211-.426-.29l-.664-.264c-.513-.205-.893-.454-1.141-.74-.247-.287-.372-.647-.372-1.082 0-.447.162-.822.484-1.127.322-.306.765-.457 1.326-.457.567 0 1.032.148 1.391.442.359.295.538.711.538 1.246h-1.935c-.012-.193-.066-.334-.16-.425-.093-.09-.233-.135-.418-.135-.213 0-.376.05-.49.148-.114.1-.171.221-.171.365 0 .129.039.24.117.332.078.092.19.171.336.236l.79.312c.507.202.876.448 1.109.737.231.288.346.659.346 1.111 0 .47-.167.856-.5 1.157-.334.3-.81.453-1.427.453zM10.597 12.854h1.947v5.271h1.947v-5.271h1.947V11h-5.841v1.854z"/></svg>
-              TypeScript
-            </span>
-            <span className="skill-pill">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#61DAFB"><path d="M24 12c0 3.314-5.373 6-12 6s-12-2.686-12-6 5.373-6 12-6 12 2.686 12 6z"/><circle cx="12" cy="12" r="2.5"/></svg>
-              React
-            </span> 
-            and <span className="skill-pill">Next.js</span>. I specialize in AI integration and technical workflow optimization.
+          <p className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 font-black">
+            Web Developer & <span className="text-zinc-200">QA Specialist</span>
           </p>
-          <div className="cta-group">
-            <button className="btn-primary">Get in touch</button>
-            <button className="btn-secondary">View CV</button>
+        </header>
+
+        {/* Technical Stack - Glassmorphism & SVG Icons */}
+        <section className="mb-14 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
+          <div className="flex flex-wrap gap-2.5">
+            {[
+              { name: 'TypeScript', icon: <Code2 size={12} /> },
+              { name: 'Next.js', icon: <Globe size={12} /> },
+              { name: 'React', icon: <Layout size={12} /> },
+              { name: 'Tailwind', icon: <Cpu size={12} /> },
+              { name: 'PostgreSQL', icon: <Database size={12} /> },
+              { name: 'QA Testing', icon: <ShieldCheck size={12} /> }
+            ].map((tech) => (
+              <div 
+                key={tech.name}
+                className="flex items-center gap-2 px-3 py-1.5 text-[9px] font-bold tracking-widest uppercase bg-white/[0.02] backdrop-blur-2xl border border-white/5 rounded text-zinc-500 hover:text-white hover:border-white/20 hover:bg-white/[0.05] transition-all duration-500 cursor-default"
+              >
+                <span className="opacity-50 group-hover:opacity-100">{tech.icon}</span>
+                {tech.name}
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Featured Project: Vantage Hype */}
-        <section id="projects" className="section-container">
-          <h2 className="section-label">Featured Project</h2>
-          <div className="glass-card">
-            <div className="card-tag">AI Marketing Tool</div>
-            <h3>Vantage Hype</h3>
-            <p>
-              An intelligent platform developed to transform low-quality marketing phrases into 
-              high-quality, distinct professional posts. Built with Next.js to optimize 
-              business workflows.
-            </p>
-            <a href="#" className="text-link">Explore project →</a>
-          </div>
-        </section>
+        {/* Action Buttons */}
+        <footer className="flex flex-wrap gap-4 items-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+          {/* Resume Link */}
+          <a
+            href={cvLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 px-6 py-3 bg-white/[0.04] backdrop-blur-md border border-white/10 text-white rounded-full hover:bg-white/[0.08] transition-all duration-300 text-[11px] font-bold tracking-widest uppercase"
+          >
+            <FileText size={16} className="text-zinc-500 group-hover:text-blue-400 transition-colors" />
+            Resume
+          </a>
 
-        {/* Experience & Education */}
-        <section id="experience" className="section-container">
-          <h2 className="section-label">Experience</h2>
-          <div className="exp-item">
-            <div className="exp-header">
-              <h4>Quality Assurance Tester</h4>
-              <span>uTest</span>
-            </div>
-            <p>Executing test cases and identifying software bugs to ensure premium UI/UX reliability.</p>
-          </div>
+          {/* Email Copy Button */}
+          <button
+            onClick={handleCopyEmail}
+            className="flex items-center gap-3 px-6 py-3 bg-white text-black rounded-full hover:bg-zinc-200 active:scale-95 transition-all duration-300 text-[11px] font-black tracking-widest uppercase shadow-xl"
+          >
+            {copied ? (
+              <>
+                <Check size={16} strokeWidth={3} className="text-green-600" />
+                <span>Copied!</span>
+              </>
+            ) : (
+              <>
+                <Send size={16} />
+                <span>Get in touch</span>
+              </>
+            )}
+          </button>
 
-          <h2 className="section-label" style={{marginTop: '40px'}}>Education</h2>
-          <div className="exp-item">
-            <div className="exp-header">
-              <h4>B.Sc. Computer Science</h4>
-              <span>Bells University of Technology</span>
-            </div>
-            <p>Currently pursuing undergraduate studies in the 2025/2026 academic session.</p>
+          {/* Minimal Social Links */}
+          <div className="flex gap-5 ml-auto text-zinc-600">
+            <a href="#" className="hover:text-white transition-colors"><Github size={18} /></a>
+            <a href="#" className="hover:text-white transition-colors"><Linkedin size={18} /></a>
+            <a href={`mailto:${email}`} className="hover:text-white transition-colors"><Mail size={18} /></a>
           </div>
-        </section>
-
-        {/* Footer */}
-        <footer id="contact" className="footer">
-          <div className="socials">
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Email</a>
-          </div>
-          <p>© 2026 Shola Akinosi. Built with Next.js.</p>
         </footer>
       </main>
     </div>
