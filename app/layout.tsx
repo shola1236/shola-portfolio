@@ -13,9 +13,9 @@ const themeScript = `
 (function () {
   try {
     var saved = localStorage.getItem('theme');
-    var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.classList.toggle('dark', dark);
-  } catch (e) { document.documentElement.classList.add('dark'); }
+    var light = saved ? saved === 'light' : window.matchMedia('(prefers-color-scheme: light)').matches;
+    document.documentElement.classList.toggle('light', light);
+  } catch (e) { document.documentElement.classList.add('light'); }
 })();
 `;
 
